@@ -9,23 +9,22 @@ Things you may want to cover:
 
   Ruby 2.5.6
   
-## Getting Started
-To get the Rails server running locally:
+## 1 Getting Started
 
 * Clone this repo ```git clone https://github.com/MathewsMacedo/Loja_App```
 
-## System dependencies
+## 2 System dependencies
 
 * ```bundle install``` to install all required dependencies
 
-## Database creation
+## 3 Database creation
 
 * ```rails db:migrate``` to make all database migrations
 
-## How to run the test suite
+## 4 How to run the test suite
 
 * ```rails server``` to start the local server
 
-## Services (job queues, cache servers, search engines, etc.)
+## 5 Services (job queues, cache servers, search engines, etc.)
 
 * ...
