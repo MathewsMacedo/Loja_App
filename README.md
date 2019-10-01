@@ -9,6 +9,10 @@ Things you may want to cover:
 
   Ruby 2.5.6
   
+## Rails version
+
+  Rails 5.2.1 > 
+  
 ## Getting Started
 
 * Clone this repo ```git clone https://github.com/MathewsMacedo/Loja_App```
