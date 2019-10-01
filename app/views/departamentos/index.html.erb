@@ -1,6 +1,10 @@
 
-<h1>Departamentos</h1>
-
+<h1>Departamentos</h1><br/>
+<% if flash[:notice]%>
+    <div class="alert alert-success" role="alert">
+    <%= flash[:notice]%>
+    </div>
+<%end%>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -15,7 +19,7 @@
         <td><%= departamento.nome %></td>
         <td><%= link_to 'Ver Produtos', departamento, class:"btn  btn-default"%></td>
         <td><%= link_to 'Editar', edit_departamento_path(departamento), class:"btn  btn-default" %></td>
-        <td><%= link_to 'Remover', departamento, method: :delete, data: { confirm: 'Tem certeza que deseja remover o departamento #{departamento.nome}?' }, class:"btn  btn-danger" %></td>
+        <td><%= link_to 'Remover', departamento, method: :delete, data: { confirm: "Tem certeza que deseja remover o departamento #{departamento.nome}?" }, class:"btn  btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

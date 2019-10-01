@@ -1,6 +1,6 @@
 class ProdutosController < ApplicationController
 
-    before_action :set_produto, only: [:edit, :update, :destory]
+    before_action :set_produto, only: [:edit, :update, :destroy]
 
     def index
         @produtos = Produto.order(nome: :asc)
@@ -15,7 +15,7 @@ class ProdutosController < ApplicationController
 
     def update  
         if @produto.update produto_params
-            flash[:notice] = "Produto atualizado com sucesso"
+            flash[:notice] = "Produto atualizado com sucesso!"
             redirect_to root_url 
         else
            renderizar :edit
@@ -38,12 +38,13 @@ class ProdutosController < ApplicationController
 
     def destroy 
         @produto.destroy
+        flash[:notice] = "Produto removido com sucesso!"
         redirect_to root_url
     end
 
     def busca
         @nome = params[:nome]
-        @produtos = Produto.where "nome like ?",  "%#{@nome}%"
+        @produtos = Produto.where("nome like ?",  "%#{@nome}%").order(nome: :asc)
     end
 
     private

@@ -27,39 +27,33 @@ class DepartamentosController < ApplicationController
   def create
     @departamento = Departamento.new(departamento_params)
 
-    respond_to do |format|
+    
       if @departamento.save
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully created.' }
-        format.json { render :show, status: :created, location: @departamento }
+        flash[:notice] = "Departamento Cadastrado com sucesso!"
+        redirect_to departamentos_url
       else
-        format.html { render :new }
-        format.json { render json: @departamento.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
+   
   end
 
   # PATCH/PUT /departamentos/1
   # PATCH/PUT /departamentos/1.json
   def update
-    respond_to do |format|
-      if @departamento.update(departamento_params)
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully updated.' }
-        format.json { render :show, status: :ok, location: @departamento }
-      else
-        format.html { render :edit }
-        format.json { render json: @departamento.errors, status: :unprocessable_entity }
-      end
+    if @departamento.update departamento_params
+      flash[:notice] = "Departamento atualizado com sucesso!"
+      redirect_to departamentos_url
+    else
+      render :new 
     end
   end
 
   # DELETE /departamentos/1
   # DELETE /departamentos/1.json
   def destroy
-    @departamento.destroy
-    respond_to do |format|
-      format.html { redirect_to departamentos_url, notice: 'Departamento was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @departamento.destroy
+      flash[:notice] = "Departamento removido com sucesso!"
+      redirect_to departamentos_url
   end
 
   private
