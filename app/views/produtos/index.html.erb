@@ -1,14 +1,22 @@
-<html>
-    <body>
+
+<h1>Produtos</h1>
+
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+    <%= flash[:notice]%>
+    </div>
+<% end %>
+
 
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Descrição</th>
+                    <th>Departamento</th>
                     <th>Preco</th>
                     <th>Quantidade</th>
-                    <th colspan="1">
+                    <th colspan="2">
                 </tr>
             </thead>
             <tbody>
@@ -16,10 +24,12 @@
                     <tr>
                             <td><%= produto.nome%></td>
                             <td><%= produto.descricao%></td>
+                            <td><%= produto.departamento.nome%></td>
                             <td><%= produto.preco%></td>
                             <td><%= produto.quantidade%></td>
                             <td><%= button_to "Remover", produto, method: :delete, class:"btn btn-danger",
                             data: {confirm:"Tem certeza que deseja remover o/a #{produto.nome}?"}%></td>
+                            <td><%= link_to "Alterar", edit_produto_path(produto), class:"btn  btn-default"%></td>
                         </tr>
             <%end%>
 
@@ -49,8 +59,3 @@
 
             </tbody>
         </table>
-    </body>
-
-
-
-</html>
