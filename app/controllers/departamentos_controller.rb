@@ -54,7 +54,7 @@ class DepartamentosController < ApplicationController
 
       produto  = Produto.where('departamento_id = ?',@id)
        if  produto.size > 0
-        flash[:error] = "Existe produtos vinculado ao Departamento!"
+        flash[:error] = "Não foi possivel remover o departamento, porque existe produtos vinculado ao Departamento!"
         redirect_to departamentos_url
          return
        end
