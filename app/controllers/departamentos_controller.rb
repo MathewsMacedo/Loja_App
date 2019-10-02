@@ -51,6 +51,13 @@ class DepartamentosController < ApplicationController
   # DELETE /departamentos/1
   # DELETE /departamentos/1.json
   def destroy
+
+      produto  = Produto.where('departamento_id = ?',@id)
+       if  produto.size > 0
+        flash[:error] = "Existe produtos vinculado ao Departamento!"
+        redirect_to departamentos_url
+         return
+       end
       @departamento.destroy
       flash[:notice] = "Departamento removido com sucesso!"
       redirect_to departamentos_url
@@ -59,6 +66,7 @@ class DepartamentosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_departamento
+      @id = params[:id]
       @departamento = Departamento.find(params[:id])
     end
 
