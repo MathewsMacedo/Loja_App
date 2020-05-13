@@ -11,6 +11,12 @@ class ProdutosController < ApplicationController
         @produto = Produto.new
         @departamentos = Departamento.order(nome: :asc)
     end 
+
+    def show
+        @nome = params[:nome]
+        @produtos = Produto.where("nome = ?", @nome).order(nome: :asc)
+        render json: { :user => @produtos}
+    end
     
 
     def update  
